@@ -5,7 +5,7 @@ description = "A collection of utility scripts designed to streamline tasks and 
 authors = [
     { name = "Masashi Fukuzawa", email = "m.fukuzawa0316@gmail.com" }
 ]
-dependencies = ["boto3~=1.28.12", "slack_sdk~=3.21.3"]
+dependencies = ["boto3", "prettytable", "python-dotenv"]
 readme = "README.md"
 requires-python = ">= 3.8"
 
@@ -15,10 +15,13 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = ["flake8~=5.0.4", "black~=23.7.0", "isort~=5.12.0"]
+dev-dependencies = ["flake8", "black", "isort"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/"]
 
 [tool.black]
 include = '\.pyi?$'
