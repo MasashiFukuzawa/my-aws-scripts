@@ -5,7 +5,7 @@ description = "A collection of utility scripts designed to streamline tasks and 
 authors = [
     { name = "Masashi Fukuzawa", email = "m.fukuzawa0316@gmail.com" }
 ]
-dependencies = ["boto3", "prettytable", "python-dotenv"]
+dependencies = ["boto3", "prettytable", "python-dotenv", "requests"]
 readme = "README.md"
 requires-python = ">= 3.8"
 
