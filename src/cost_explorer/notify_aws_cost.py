@@ -2,6 +2,7 @@ import datetime
 import os
 
 import boto3
+import requests
 from dateutil.relativedelta import relativedelta
 from dotenv import load_dotenv
 from prettytable import PrettyTable
@@ -113,6 +114,22 @@ def print_top_services_comparison(
 
     print(table)
 
+    return table
+
+
+# Function to send a message to Slack using Incoming Webhook with a code block
+def send_slack_message_via_webhook(webhook_url, message, code):
+    # Format the message to include a code block
+    formatted_message = f"{message}\n```{code}```"
+    payload = {"text": formatted_message}
+    # Send the POST request
+    response = requests.post(webhook_url, json=payload)
+    # Check the response
+    if response.status_code != 200:
+        raise ValueError(
+            f"Request to Slack returned an error {response.status_code}, the response is:\n{response.text}"
+        )
+
 
 load_dotenv()
 
@@ -139,12 +156,16 @@ percentage_difference = (
 )
 
 # Call the function with the top 5 services by cost for last month and current month, and total costs
-print(
-    f"前月比で {abs(percentage_difference):.2f}% コストが{'減少' if percentage_difference < 0 else '増加'}しています。"
-)
-print_top_services_comparison(
+table = print_top_services_comparison(
     services_cost_last_month,
     services_cost_current,
     total_cost_last_month,
     total_cost_current,
 )
+
+# Prepare your message and code
+message = f"AWSコストが前月比で {abs(percentage_difference):.2f}% {'減少' if percentage_difference < 0 else '増加'}しています。"
+code = table.get_string()
+
+# Send the message with code block
+send_slack_message_via_webhook(os.environ["SLACK_WEBHOOK_URL"], message, code)
