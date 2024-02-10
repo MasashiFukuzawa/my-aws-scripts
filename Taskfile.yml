@@ -4,6 +4,7 @@ tasks:
   check-all:
     desc: 'task check-all'
     cmds:
+      - rye run pytest .
       - rye run isort --check-only .
       - rye run black --check .
       - rye run flake8 .
@@ -16,3 +17,7 @@ tasks:
     cmds:
       - rye run isort {{.CLI_ARGS}}
       - rye run black {{.CLI_ARGS}}
+  pytest:
+    desc: 'task pytest -- path/to/file'
+    cmds:
+      - rye run pytest {{.CLI_ARGS}}

@@ -25,6 +25,7 @@ jobs:
 
       - name: Check all
         run: |
+          pytest .
           flake8 .
           isort . --check-only
           black --check .
