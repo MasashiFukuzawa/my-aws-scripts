@@ -15,7 +15,7 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = ["flake8", "black", "isort"]
+dev-dependencies = ["flake8", "black", "isort", "pytest", "requests_mock"]
 
 [tool.hatch.metadata]
 allow-direct-references = true

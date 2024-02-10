@@ -16,6 +16,7 @@ charset-normalizer==3.3.2
 click==8.1.7
 flake8==7.0.0
 idna==3.6
+iniconfig==2.0.0
 isort==5.13.2
 jmespath==1.0.1
 mccabe==0.7.0
@@ -23,12 +24,15 @@ mypy-extensions==1.0.0
 packaging==23.2
 pathspec==0.12.1
 platformdirs==4.2.0
+pluggy==1.4.0
 prettytable==3.9.0
 pycodestyle==2.11.1
 pyflakes==3.2.0
+pytest==8.0.0
 python-dateutil==2.8.2
 python-dotenv==1.0.1
 requests==2.31.0
+requests-mock==1.11.0
 s3transfer==0.10.0
 six==1.16.0
 urllib3==2.0.7
