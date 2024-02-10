@@ -1,8 +1,9 @@
 # How To Use
 
 ```bash
-cd src/cost_explorer
-cp .env.example .env
-vim .env # fill in the values
-python print_aws_cost.py
+cd my-aws-scripts/src
+export PYTHONPATH="$(pwd):$PYTHONPATH"
+cp cost_explorer/.env.example cost_explorer/.env
+vim cost_explorer/.env # fill in the values
+python cost_explorer/example.py
 ```
